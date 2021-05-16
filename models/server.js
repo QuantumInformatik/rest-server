@@ -23,7 +23,31 @@ class Server {
     routes() {
 
         this.app.get('/api', (req, res) => {
-            res.send('Hello World')
+            res.json({
+                ok: true,
+                mensaje: 'get Api'
+            })
+        })
+
+        this.app.put('/api', (req, res) => {
+            res.json({
+                ok: true,
+                mensaje: 'put Api'
+            })
+        })
+
+        this.app.post('/api', (req, res) => {
+            res.json({
+                ok: true,
+                mensaje: 'post Api'
+            })
+        })
+
+        this.app.delete('/api', (req, res) => {
+            res.json({
+                ok: true,
+                mensaje: 'delete Api'
+            })
         })
     }
 
