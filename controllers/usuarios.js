@@ -9,9 +9,12 @@ const usuariosGet = (req, res = response) => {
 }
 
 const usuariosPost = (req, res = response) => {
+    const body = req.body;
+
     res.json({
         ok: true,
-        mensaje: 'Post Api - controller'
+        mensaje: 'Post Api - controller',
+        body: body
     })
 }
 

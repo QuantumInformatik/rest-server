@@ -9,6 +9,7 @@ class Server {
     constructor() {
         this.app = express()
         this.puerto = process.env.PORT
+
         this.usuariosPath = {
             endpoint: '/api/usuarios',
             path: '../routes/usuarios'
@@ -24,6 +25,10 @@ class Server {
 
     middlewares() {
         this.app.use(cors())
+
+        //lectura postman
+        this.app.use(express.json())
+
         this.app.use(express.static('public'))
     }
 
