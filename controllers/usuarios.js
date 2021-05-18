@@ -1,4 +1,8 @@
-const { response } = require('express')
+const { response } = require('express');
+const UsuarioService = require('../services/usuario');
+const usuarioService = new UsuarioService();
+
+
 
 
 const usuariosGet = (req, res = response) => {
@@ -13,12 +17,20 @@ const usuariosGet = (req, res = response) => {
 
 const usuariosPost = (req, res = response) => {
     const body = req.body;
-
-    res.json({
-        ok: true,
-        mensaje: 'Post Api - controller',
-        body: body
-    })
+    usuarioService.crearUsuario(body)
+        .then(() => {
+            res.json({
+                mensaje: 'Post Api - controller',
+                body
+            })
+        })
+        .catch((e) => {
+            console.log("ERROR PERSO " + e)
+            res.json({
+                error: 'Creando usuario falló ' + e,
+                body
+            })
+        });
 }
 
 const usuariosPut = (req, res = response) => {
