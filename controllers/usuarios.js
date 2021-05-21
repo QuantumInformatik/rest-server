@@ -17,11 +17,13 @@ const usuariosGet = (req, res = response) => {
 
 const usuariosPost = (req, res = response) => {
     const body = req.body;
+
     usuarioService.crearUsuario(body)
-        .then(() => {
+        .then((a) => {
+            console.log("AAAA: " + a.mensaje)
             res.json({
-                mensaje: 'Post Api - controller',
-                body
+                desde: 'Post Api - controller',
+                api_result: a
             })
         })
         .catch((e) => {
