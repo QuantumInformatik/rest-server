@@ -1,5 +1,4 @@
 const { response } = require('express');
-const { validationResult } = require('express-validator');
 const UsuarioService = require('../services/usuario');
 const usuarioService = new UsuarioService();
 
@@ -18,11 +17,7 @@ const usuariosGet = (req, res = response) => {
 
 const usuariosPost = (req, res = response) => {
     const body = req.body;
-    const errors = validationResult(req);
-    console.log(errors)
-    if (!errors.isEmpty()) {
-        return res.status(400).json(errors);
-    }
+
 
     usuarioService.crearUsuario(body)
         .then((a) => {
