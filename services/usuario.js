@@ -8,17 +8,6 @@ class UsuarioService {
 
         const usuarioModel = new Usuario({ nombre, correo, password, rol });
 
-        // verificar si el correo existe
-        const existeEmail = await Usuario.findOne({ correo });
-
-        if (existeEmail) {
-            return {
-                mensaje: "Correo ya está en uso",
-                status: "400",
-                usuario: ""
-            }
-        }
-
         // encriptar contraseña
         const salt = bcrypt.genSaltSync(10);
         usuarioModel.password = bcrypt.hashSync(password, salt);
