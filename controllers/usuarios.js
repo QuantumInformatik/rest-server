@@ -23,7 +23,8 @@ const usuariosPost = (req, res = response) => {
         .then((a) => {
             console.log("AAAA: " + a.mensaje)
             res.status(a.status).json({
-                mensaje: a.mensaje
+                mensaje: a.mensaje,
+                usaurio: a.usuario
             })
         })
         .catch((e) => {

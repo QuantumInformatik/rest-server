@@ -14,7 +14,8 @@ class UsuarioService {
         if (existeEmail) {
             return {
                 mensaje: "Correo ya está en uso",
-                status: "400"
+                status: "400",
+                usuario: ""
             }
         }
 
@@ -28,7 +29,7 @@ class UsuarioService {
         return {
             mensaje: "Creado con exito",
             status: "200",
-            usuarioModel
+            usuario: usuarioModel
         }
 
     }
