@@ -36,14 +36,17 @@ const usuariosPost = (req, res = response) => {
         });
 }
 
-const usuariosPut = (req, res = response) => {
+const usuariosPut = async(req, res = response) => {
     const id = req.params.id;
 
-    res.json({
-        ok: true,
-        mensaje: 'put Api - controller',
-        id: id
-    })
+    usuarioService.actualizarUsuario(id, req)
+        .then((u) => {
+            res.status(u.status).json({
+                mensaje: 'put Api - controller',
+                usuario: u.usuarioUp
+            })
+        });
+
 }
 
 const usuariosPatch = (req, res = response) => {

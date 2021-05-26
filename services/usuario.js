@@ -23,6 +23,26 @@ class UsuarioService {
 
     }
 
+
+    async actualizarUsuario(id, req) {
+        console.log('Hola desde el service actualizar')
+        const { password, google, correo, ...resto } = req.body;
+
+        if (password) {
+            const salt = bcrypt.genSaltSync(10);
+            resto.password = bcrypt.hashSync(password, salt);
+        }
+        const usuarioUp = await Usuario.findByIdAndUpdate(id, resto);
+        console.log(usuarioUp)
+
+        return {
+            status: "200",
+            usuarioUp
+        }
+
+
+    }
+
 }
 
 module.exports = UsuarioService
