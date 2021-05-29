@@ -11,6 +11,7 @@ const usuariosGet = (req, res = response) => {
     usuarioService.obtenerUsuarios(req)
         .then((usuarios) => {
             res.json({
+                total: usuarios.total,
                 usuarios: usuarios.usuarios
             })
         })

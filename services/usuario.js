@@ -45,16 +45,22 @@ class UsuarioService {
 
     async obtenerUsuarios(req) {
         console.log('Hola desde el service get')
+        const condicion = { estado: true };
 
         const { limite = 6, desde = 0 } = req.query;
 
-        const usuarios = await Usuario.find()
+        const [total, usuarios] = await Promise.all([
+            Usuario.countDocuments(condicion),
+            Usuario.find(condicion)
             .skip(Number(desde))
             .limit(Number(limite))
-        console.log(usuarios)
+
+        ])
+
 
         return {
             status: "200",
+            total,
             usuarios
         }
 
