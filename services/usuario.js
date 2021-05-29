@@ -57,11 +57,38 @@ class UsuarioService {
 
         ])
 
-
         return {
             status: "200",
             total,
             usuarios
+        }
+
+
+    }
+
+    async eliminarUsuarioFisicamente(req) {
+        console.log('Hola desde el service eliminar')
+        const { id } = req.params;
+        const usuario = await Usuario.findByIdAndDelete(id);
+
+
+        return {
+            status: "200",
+            usuario
+        }
+
+
+    }
+
+    async eliminarUsuarioLogicamente(req) {
+        console.log('Hola desde el service eliminar')
+        const { id } = req.params;
+        const usuario = await Usuario.findByIdAndUpdate(id, { estado: false });
+
+
+        return {
+            status: "200",
+            usuario
         }
 
 

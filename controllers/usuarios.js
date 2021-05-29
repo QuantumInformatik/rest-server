@@ -60,10 +60,17 @@ const usuariosPatch = (req, res = response) => {
 }
 
 const usuariosDelete = (req, res = response) => {
-    res.json({
-        ok: true,
-        mensaje: 'delete Api - controller'
-    })
+
+    usuarioService.eliminarUsuarioLogicamente(req)
+        .then((usuario) => {
+            res.json({
+                ok: true,
+                usuario: usuario.usuario
+            })
+
+        })
+
+
 }
 
 module.exports = {
