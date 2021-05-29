@@ -43,6 +43,24 @@ class UsuarioService {
 
     }
 
+    async obtenerUsuarios(req) {
+        console.log('Hola desde el service get')
+
+        const { limite = 6, desde = 0 } = req.query;
+
+        const usuarios = await Usuario.find()
+            .skip(Number(desde))
+            .limit(Number(limite))
+        console.log(usuarios)
+
+        return {
+            status: "200",
+            usuarios
+        }
+
+
+    }
+
 }
 
 module.exports = UsuarioService

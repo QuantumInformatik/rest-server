@@ -6,13 +6,15 @@ const usuarioService = new UsuarioService();
 
 
 const usuariosGet = (req, res = response) => {
-    const query = req.query;
+    //const query = req.query;
 
-    res.json({
-        ok: true,
-        mensaje: 'get Api - controller',
-        query
-    })
+    usuarioService.obtenerUsuarios(req)
+        .then((usuarios) => {
+            res.json({
+                usuarios: usuarios.usuarios
+            })
+        })
+
 }
 
 const usuariosPost = (req, res = response) => {
