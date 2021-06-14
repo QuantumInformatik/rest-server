@@ -19,6 +19,11 @@ class Server {
             path: '../routes/usuarios'
         };
 
+        this.authPath = {
+            endpoint: '/api/auth',
+            path: '../routes/auth'
+        };
+
 
 
         //Middlewares
@@ -43,7 +48,8 @@ class Server {
     }
 
     routes() {
-        this.app.use(this.usuariosPath.endpoint, require(this.usuariosPath.path))
+        this.app.use(this.usuariosPath.endpoint, require(this.usuariosPath.path));
+        this.app.use(this.authPath.endpoint, require(this.authPath.path))
 
     }
 
