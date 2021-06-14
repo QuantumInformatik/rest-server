@@ -83,12 +83,14 @@ class UsuarioService {
     async eliminarUsuarioLogicamente(req) {
         console.log('Hola desde el service eliminar')
         const { id } = req.params;
-        const usuario = await Usuario.findByIdAndUpdate(id, { estado: false });
 
+        const usuario = await Usuario.findByIdAndUpdate(id, { estado: false });
+        const usuarioAutenticado = req.usuarioAutenticado;
 
         return {
             status: "200",
-            usuario
+            usuario,
+            usuarioAutenticado
         }
 
 

@@ -62,10 +62,11 @@ const usuariosPatch = (req, res = response) => {
 const usuariosDelete = (req, res = response) => {
 
     usuarioService.eliminarUsuarioLogicamente(req)
-        .then((usuario) => {
+        .then((usuario) => { 
             res.json({
                 ok: true,
-                usuario: usuario.usuario
+                usuario: usuario.usuario,
+                usuarioAutenticado: usuario.usuarioAutenticado
             })
 
         })
