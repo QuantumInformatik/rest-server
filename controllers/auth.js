@@ -20,7 +20,6 @@ const login = async(req, res = response) => {
         }
 
 
-
         //si el usuario está activo
         if (!usuario.estado) {
             respuesta.estado = 400
@@ -42,10 +41,9 @@ const login = async(req, res = response) => {
 
 
 
-
     } catch (error) {
         res.status(500).json({
-            mensaje: 'Hable con el admin'
+            mensaje: 'Hable con el administrador'
         })
     }
 
