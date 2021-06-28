@@ -21,8 +21,32 @@ const esAdminRole = (req, res = response, next)=>{
 
 }
 
+const tieneRol = (...roles)=>{
+
+    return (req, res = response, next)=>{
+        console.log(roles)
+
+        if(!req.usuarioAutenticado){
+            return res.status(500).json({
+                mensaje: 'se quiere verificar el role sin validar el token primero'
+            })
+        }
+
+        if(!roles.includes(req.usuarioAutenticado.rol)){
+            return res.status(401).json({
+                mensaje: 'Acción no autorizada para su usuario.'
+            })
+        }
+
+        next();
+    }
+
+
+}
+
 
 module.exports={
-    esAdminRole
+    esAdminRole,
+    tieneRol
 }
 
