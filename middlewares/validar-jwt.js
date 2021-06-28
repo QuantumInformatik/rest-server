@@ -5,7 +5,7 @@ const Usuario = require('../models/usuario');
 
 const validarJwt = async(req, res = response, next)=>{
     const token = req.header('Authorization');
-    console.log(token)
+    console.log("token "+token)
     if(!token){
         return res.status(401).json({
             mensaje: 'Usuario no autenticado'
