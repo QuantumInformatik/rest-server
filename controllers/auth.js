@@ -68,6 +68,16 @@ const responder = (res, respuesta) => {
     })
 }
 
+const googleSingIn = (req, res = response) => {
+
+    const { id_token } = req.body
+    console.log(id_token)
+    let respuesta = { estado: 200, mensaje: "google singin"+id_token  };
+
+   
+    return responder(res, respuesta)
+}
+
 module.exports = {
-    login
+    login,googleSingIn
 }
